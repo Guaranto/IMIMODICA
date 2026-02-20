@@ -1,7 +1,49 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
-  <rect width="40" height="40" rx="6" fill="#222244"/>
-  <text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle"
-        font-family="Georgia, serif" font-size="16" font-weight="700" fill="#e6b501">
-    IMI
-  </text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <!-- Warm cream parchment background -->
+  <rect width="800" height="800" fill="#faf6ee"/>
+  
+  <!-- Outer burgundy border frame -->
+  <rect x="40" y="40" width="720" height="720" fill="none" stroke="#8b2635" stroke-width="2.5"/>
+  
+  <!-- Inner burgundy border frame -->
+  <rect x="55" y="55" width="690" height="690" fill="none" stroke="#8b2635" stroke-width="1"/>
+  
+  <!-- Decorative corner elements - top left -->
+  <line x1="40" y1="90" x2="70" y2="90" stroke="#8b2635" stroke-width="1"/>
+  <line x1="90" y1="40" x2="90" y2="70" stroke="#8b2635" stroke-width="1"/>
+  
+  <!-- Decorative corner elements - top right -->
+  <line x1="730" y1="90" x2="760" y2="90" stroke="#8b2635" stroke-width="1"/>
+  <line x1="710" y1="40" x2="710" y2="70" stroke="#8b2635" stroke-width="1"/>
+  
+  <!-- Decorative corner elements - bottom left -->
+  <line x1="40" y1="710" x2="70" y2="710" stroke="#8b2635" stroke-width="1"/>
+  <line x1="90" y1="730" x2="90" y2="760" stroke="#8b2635" stroke-width="1"/>
+  
+  <!-- Decorative corner elements - bottom right -->
+  <line x1="730" y1="710" x2="760" y2="710" stroke="#8b2635" stroke-width="1"/>
+  <line x1="710" y1="730" x2="710" y2="760" stroke="#8b2635" stroke-width="1"/>
+
+  <!-- Top decorative horizontal rule -->
+  <line x1="300" y1="240" x2="500" y2="240" stroke="#8b2635" stroke-width="1"/>
+  <circle cx="295" cy="240" r="2.5" fill="#8b2635"/>
+  <circle cx="505" cy="240" r="2.5" fill="#8b2635"/>
+
+  <!-- Main monogram "IMI" in elegant serif -->
+  <text x="400" y="430" 
+        font-family="'Palatino Linotype', 'Book Antiqua', Palatino, 'Times New Roman', Times, serif" 
+        font-size="180" 
+        font-weight="normal"
+        letter-spacing="28"
+        fill="#8b2635" 
+        text-anchor="middle" 
+        dominant-baseline="central">IMI</text>
+
+  <!-- Bottom decorative horizontal rule -->
+  <line x1="300" y1="530" x2="500" y2="530" stroke="#8b2635" stroke-width="1"/>
+  <circle cx="295" cy="530" r="2.5" fill="#8b2635"/>
+  <circle cx="505" cy="530" r="2.5" fill="#8b2635"/>
+
+  <!-- Small decorative diamond below -->
+  <polygon points="400,570 407,580 400,590 393,580" fill="#8b2635"/>
 </svg>
