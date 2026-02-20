@@ -20,12 +20,12 @@
 
 .btn-primary {
   background: var(--color-accent);
-  color: var(--color-text-dark);
+  color: #ffffff;
 }
 
 .btn-primary:hover {
   background: var(--color-accent-hover);
-  color: var(--color-text-dark);
+  color: #ffffff;
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
 }
@@ -101,21 +101,21 @@
 }
 
 .badge-sopravvissuto {
-  background: rgba(46, 204, 113, 0.2);
+  background: rgba(45, 122, 79, 0.1);
   color: var(--color-sopravvissuto);
-  border: 1px solid rgba(46, 204, 113, 0.4);
+  border: 1px solid rgba(45, 122, 79, 0.3);
 }
 
 .badge-deceduto {
-  background: rgba(231, 76, 60, 0.2);
+  background: rgba(163, 51, 51, 0.1);
   color: var(--color-deceduto);
-  border: 1px solid rgba(231, 76, 60, 0.4);
+  border: 1px solid rgba(163, 51, 51, 0.3);
 }
 
 .badge-disperso {
-  background: rgba(241, 196, 15, 0.2);
+  background: rgba(184, 134, 11, 0.1);
   color: var(--color-disperso);
-  border: 1px solid rgba(241, 196, 15, 0.4);
+  border: 1px solid rgba(184, 134, 11, 0.3);
 }
 
 /* --- Hero --- */
@@ -126,10 +126,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  background:
-    radial-gradient(ellipse at 20% 50%, rgba(230, 181, 1, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 50%, rgba(230, 181, 1, 0.05) 0%, transparent 50%),
-    linear-gradient(180deg, #12122a 0%, #1a1a2e 40%, #222244 100%);
+  background-color: #3a3330;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -140,12 +137,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: url('data:image/svg+xml,\
-    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">\
-      <line x1="0" y1="0" x2="200" y2="200" stroke="%23333366" stroke-width="0.5" opacity="0.3"/>\
-      <line x1="200" y1="0" x2="0" y2="200" stroke="%23333366" stroke-width="0.5" opacity="0.3"/>\
-    </svg>');
-  background-size: 200px 200px;
+  background: var(--color-overlay);
   z-index: 1;
 }
 
@@ -160,14 +152,14 @@
   font-family: var(--font-heading);
   font-size: var(--text-5xl);
   font-weight: 900;
-  color: var(--color-text);
+  color: #faf6ee;
   margin-bottom: var(--space-md);
   line-height: 1.1;
 }
 
 .hero-subtitle {
   font-size: var(--text-xl);
-  color: var(--color-accent);
+  color: #d4c8b8;
   font-weight: 300;
   margin-bottom: var(--space-xl);
   letter-spacing: 0.05em;
@@ -219,9 +211,9 @@
 
 /* --- Statistiche --- */
 .stats-bar {
-  background: var(--color-surface);
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
+  background: #3a3330;
+  border-top: none;
+  border-bottom: none;
   padding: var(--space-2xl) 0;
 }
 
@@ -243,14 +235,14 @@
   font-family: var(--font-heading);
   font-size: var(--text-4xl);
   font-weight: 700;
-  color: var(--color-accent);
+  color: #faf6ee;
   line-height: 1;
   margin-bottom: var(--space-sm);
 }
 
 .stat-label {
   font-size: var(--text-sm);
-  color: var(--color-text-muted);
+  color: #b0a89e;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }

@@ -3,27 +3,27 @@
    ============================================ */
 
 :root {
-  /* Colori principali */
-  --color-bg: #1a1a2e;
-  --color-surface: #222244;
-  --color-surface-hover: #2a2a55;
-  --color-accent: #e6b501;
-  --color-accent-hover: #f5c518;
-  --color-accent-dark: #c49a00;
-  --color-text: #e8e8e8;
-  --color-text-muted: #a0a0b8;
-  --color-text-dark: #1a1a2e;
-  --color-border: #333366;
-  --color-border-light: #44447788;
+  /* Colori principali - tema storico-letterario */
+  --color-bg: #faf6ee;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f0ebe0;
+  --color-accent: #8b2635;
+  --color-accent-hover: #a33045;
+  --color-accent-dark: #6e1e2a;
+  --color-text: #2c2420;
+  --color-text-muted: #7a7068;
+  --color-text-dark: #2c2420;
+  --color-border: #d4c8b8;
+  --color-border-light: #e8e0d4;
 
   /* Badge esito */
-  --color-sopravvissuto: #2ecc71;
-  --color-deceduto: #e74c3c;
-  --color-disperso: #f1c40f;
+  --color-sopravvissuto: #2d7a4f;
+  --color-deceduto: #a33333;
+  --color-disperso: #b8860b;
 
   /* Overlay */
-  --color-overlay: rgba(26, 26, 46, 0.85);
-  --color-overlay-light: rgba(26, 26, 46, 0.6);
+  --color-overlay: rgba(44, 36, 32, 0.82);
+  --color-overlay-light: rgba(44, 36, 32, 0.5);
 
   /* Font */
   --font-heading: 'Playfair Display', Georgia, serif;
@@ -67,9 +67,9 @@
   --radius-full: 50%;
 
   /* Ombre */
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.16);
 
   /* Transizioni */
   --transition-fast: 0.15s ease;
