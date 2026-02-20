@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#222244"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg)"/>
+  <!-- Filo spinato stilizzato -->
+  <g stroke="#e6b501" stroke-width="1.5" fill="none" opacity="0.3">
+    <line x1="50" y1="200" x2="550" y2="200"/>
+    <line x1="50" y1="210" x2="550" y2="210"/>
+    <!-- Nodi -->
+    <g stroke-width="1">
+      <circle cx="120" cy="205" r="4"/><line x1="116" y1="201" x2="124" y2="209"/>
+      <circle cx="200" cy="205" r="4"/><line x1="196" y1="201" x2="204" y2="209"/>
+      <circle cx="280" cy="205" r="4"/><line x1="276" y1="201" x2="284" y2="209"/>
+      <circle cx="360" cy="205" r="4"/><line x1="356" y1="201" x2="364" y2="209"/>
+      <circle cx="440" cy="205" r="4"/><line x1="436" y1="201" x2="444" y2="209"/>
+      <circle cx="520" cy="205" r="4"/><line x1="516" y1="201" x2="524" y2="209"/>
+    </g>
+  </g>
+  <text x="300" y="300" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#a0a0b8" opacity="0.6">
+    Sostituire con foto storica
+  </text>
+</svg>

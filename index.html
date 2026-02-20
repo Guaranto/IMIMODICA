@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMI Modica — Internati Militari Italiani di Modica</title>
+  <meta name="description" content="Memoria digitale degli Internati Militari Italiani del Comune di Modica durante la Seconda Guerra Mondiale (1943-1945).">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="IMI Modica — Internati Militari Italiani di Modica">
+  <meta property="og:description" content="Memoria digitale degli Internati Militari Italiani del Comune di Modica durante la Seconda Guerra Mondiale (1943-1945).">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://imimodica.netlify.app">
+  <meta property="og:image" content="https://imimodica.netlify.app/img/og-image.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <!-- Skip link accessibilita' -->
+  <a href="#main-content" class="skip-link">Vai al contenuto principale</a>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo" aria-label="IMI Modica - Home">
+        <img src="img/logo.svg" alt="" width="40" height="40">
+        <span>IMI Modica</span>
+      </a>
+      <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="main-nav" role="navigation" aria-label="Navigazione principale">
+        <ul>
+          <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+          <li><a href="ricerca.html">Ricerca</a></li>
+          <li><a href="metodo-e-fonti.html">Metodo e Fonti</a></li>
+          <li><a href="autore.html">Autore</a></li>
+          <li><a href="crediti.html">Crediti</a></li>
+          <li><a href="contatti.html">Contatti</a></li>
+        </ul>
+      </nav>
+      <div class="nav-overlay" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" role="img" aria-label="Internati militari italiani di Modica">
+    <div class="hero-content">
+      <h1 class="hero-title">Internati Militari Italiani<br>di Modica</h1>
+      <p class="hero-subtitle">1943–1945 &nbsp;|&nbsp; Una memoria restituita</p>
+      <div class="hero-cta">
+        <a href="ricerca.html" class="btn btn-primary btn-lg">Cerca un internato</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Barra statistiche -->
+  <section class="stats-bar" aria-label="Statistiche">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number" id="stat-totale">—</div>
+        <div class="stat-label">Internati censiti</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" id="stat-campi">—</div>
+        <div class="stat-label">Campi di internamento</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" id="stat-deceduti">—</div>
+        <div class="stat-label">Deceduti</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" id="stat-sopravvissuti">—</div>
+        <div class="stat-label">Sopravvissuti</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contenuto principale -->
+  <main id="main-content" class="page-main">
+    <div class="container">
+      <!-- Sezione introduttiva -->
+      <section class="section">
+        <div class="intro-section">
+          <div class="intro-text">
+            <h2 class="section-title" style="text-align: left;">Una storia da non dimenticare</h2>
+            <p>
+              Dopo l'armistizio dell'8 settembre 1943, centinaia di migliaia di soldati italiani furono catturati
+              dalle forze tedesche e deportati nei campi di internamento del Terzo Reich. Classificati come
+              <strong>Internati Militari Italiani (IMI)</strong>, furono privati dello status di prigionieri di guerra
+              e sottoposti a lavoro forzato in condizioni disumane.
+            </p>
+            <p>
+              Anche il Comune di Modica pagò un tributo altissimo: centinaia di giovani uomini furono strappati
+              alle loro famiglie e ai loro affetti, costretti a sopravvivere nei Lager nazisti fino alla liberazione
+              nel 1945.
+            </p>
+            <p>
+              Questo progetto nasce con l'obiettivo di <strong>restituire un nome e una storia</strong> a ciascuno
+              di questi uomini, attraverso un paziente lavoro di ricerca archivistica e documentale.
+            </p>
+          </div>
+          <div class="intro-image">
+            <img src="img/intro-placeholder.svg" alt="Immagine storica legata agli internati militari italiani" loading="lazy">
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to action -->
+      <section class="section">
+        <div class="cta-section">
+          <h2>Hai informazioni su un internato modicano?</h2>
+          <p>
+            Se sei un familiare o possiedi documenti, fotografie o testimonianze relative a un internato
+            militare italiano di Modica, il tuo contributo è prezioso per completare questa ricerca.
+          </p>
+          <a href="contatti.html" class="btn btn-primary btn-lg">Contribuisci alla ricerca</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-content">
+        <div class="footer-about">
+          <h3>IMI Modica</h3>
+          <p>
+            Progetto di ricerca storica dedicato alla memoria degli Internati Militari Italiani
+            del Comune di Modica durante la Seconda Guerra Mondiale (1943-1945).
+          </p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigazione</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="ricerca.html">Ricerca IMI</a></li>
+            <li><a href="metodo-e-fonti.html">Metodo e Fonti</a></li>
+            <li><a href="autore.html">Autore</a></li>
+            <li><a href="crediti.html">Crediti</a></li>
+            <li><a href="contatti.html">Contatti</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contatti</h4>
+          <p><a href="contatti.html">Scrivici per informazioni<br>o per contribuire alla ricerca.</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024–2025 IMI Modica. Progetto di ricerca storica a cura della comunità modicana.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="js/config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/data-service.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/stats.js"></script>
+</body>
+</html>

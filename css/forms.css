@@ -1,0 +1,169 @@
+/* ============================================
+   FORMS.CSS - Filtri ricerca e form contatti
+   ============================================ */
+
+/* --- Input e Select generici --- */
+.form-group {
+  margin-bottom: var(--space-md);
+}
+
+.form-label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-control {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(230, 181, 1, 0.15);
+}
+
+.form-control::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.6;
+}
+
+select.form-control {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a0a0b8' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* --- Pannello filtri ricerca --- */
+.filters-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.filters-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+  cursor: pointer;
+}
+
+.filters-header h3 {
+  margin-bottom: 0;
+  font-size: var(--text-lg);
+  color: var(--color-accent);
+}
+
+.filters-toggle {
+  display: none;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  transition: transform var(--transition-fast);
+}
+
+.filters-toggle.collapsed {
+  transform: rotate(180deg);
+}
+
+.filters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-md);
+}
+
+.filters-actions {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.filters-count {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-left: auto;
+  align-self: center;
+}
+
+/* --- Form contatti --- */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-form .form-group {
+  margin-bottom: var(--space-lg);
+}
+
+.form-submit {
+  text-align: center;
+  margin-top: var(--space-xl);
+}
+
+.form-success {
+  background: rgba(46, 204, 113, 0.15);
+  border: 1px solid rgba(46, 204, 113, 0.4);
+  color: var(--color-sopravvissuto);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  text-align: center;
+  display: none;
+}
+
+.form-error {
+  background: rgba(231, 76, 60, 0.15);
+  border: 1px solid rgba(231, 76, 60, 0.4);
+  color: var(--color-deceduto);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  text-align: center;
+  display: none;
+}
+
+/* --- Responsive filtri --- */
+@media (max-width: 768px) {
+  .filters-toggle {
+    display: block;
+  }
+
+  .filters-body {
+    overflow: hidden;
+    transition: max-height var(--transition-base);
+  }
+
+  .filters-body.collapsed {
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  .filters-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filters-actions {
+    flex-direction: column;
+  }
+}

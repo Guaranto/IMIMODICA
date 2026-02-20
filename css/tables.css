@@ -1,0 +1,183 @@
+/* ============================================
+   TABLES.CSS - Override DataTables per tema scuro
+   ============================================ */
+
+/* Wrapper */
+.dataTables_wrapper {
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+/* Tabella */
+table.dataTable {
+  width: 100% !important;
+  border-collapse: collapse;
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+table.dataTable thead th {
+  background: var(--color-bg);
+  color: var(--color-accent);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: var(--space-md) var(--space-md);
+  border-bottom: 2px solid var(--color-accent);
+  white-space: nowrap;
+}
+
+table.dataTable tbody td {
+  padding: var(--space-md);
+  border-bottom: 1px solid var(--color-border-light);
+  font-size: var(--text-sm);
+  vertical-align: middle;
+}
+
+table.dataTable tbody tr {
+  background: var(--color-surface);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+table.dataTable tbody tr:hover {
+  background: var(--color-surface-hover);
+}
+
+table.dataTable tbody tr:nth-child(even) {
+  background: rgba(34, 34, 68, 0.6);
+}
+
+table.dataTable tbody tr:nth-child(even):hover {
+  background: var(--color-surface-hover);
+}
+
+/* Sorting icons */
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc {
+  cursor: pointer;
+  position: relative;
+  padding-right: var(--space-xl);
+}
+
+table.dataTable thead .sorting::after,
+table.dataTable thead .sorting_asc::after,
+table.dataTable thead .sorting_desc::after {
+  position: absolute;
+  right: var(--space-sm);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+table.dataTable thead .sorting::after { content: '\2195'; }
+table.dataTable thead .sorting_asc::after { content: '\2191'; color: var(--color-accent); }
+table.dataTable thead .sorting_desc::after { content: '\2193'; color: var(--color-accent); }
+
+/* Info e length */
+.dataTables_info {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  padding: var(--space-md) 0;
+}
+
+.dataTables_length {
+  margin-bottom: var(--space-md);
+}
+
+.dataTables_length label {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.dataTables_length select {
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+}
+
+/* Paginazione */
+.dataTables_paginate {
+  padding: var(--space-md) 0;
+  text-align: right;
+}
+
+.dataTables_paginate .paginate_button {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-md);
+  margin: 0 2px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
+}
+
+.dataTables_paginate .paginate_button:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-accent);
+  border-color: var(--color-border);
+}
+
+.dataTables_paginate .paginate_button.current {
+  background: var(--color-accent);
+  color: var(--color-text-dark);
+  font-weight: 600;
+}
+
+.dataTables_paginate .paginate_button.disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.dataTables_paginate .paginate_button.disabled:hover {
+  background: transparent;
+  color: var(--color-text-muted);
+  border-color: transparent;
+}
+
+/* Nasconde search nativa DataTables (usiamo la nostra) */
+.dataTables_filter {
+  display: none;
+}
+
+/* Wrapper top/bottom */
+.dataTables_wrapper .dt-top,
+.dataTables_wrapper .dt-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+/* Responsive - scroll orizzontale su mobile */
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+@media (max-width: 768px) {
+  table.dataTable thead th,
+  table.dataTable tbody td {
+    padding: var(--space-sm);
+    font-size: var(--text-xs);
+  }
+
+  .dataTables_paginate .paginate_button {
+    padding: var(--space-xs) var(--space-sm);
+  }
+}

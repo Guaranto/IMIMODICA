@@ -1,0 +1,61 @@
+# Netlify configuration - IMI Modica
+
+[build]
+  publish = "."
+
+# Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://code.jquery.com https://cdn.datatables.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.datatables.net; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://lh3.googleusercontent.com data:; connect-src 'self' https://sheets.googleapis.com https://formspree.io; frame-src https://drive.google.com;"
+
+# Cache static assets
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# Redirects for clean URLs
+[[redirects]]
+  from = "/ricerca"
+  to = "/ricerca.html"
+  status = 200
+
+[[redirects]]
+  from = "/scheda"
+  to = "/scheda.html"
+  status = 200
+
+[[redirects]]
+  from = "/metodo-e-fonti"
+  to = "/metodo-e-fonti.html"
+  status = 200
+
+[[redirects]]
+  from = "/autore"
+  to = "/autore.html"
+  status = 200
+
+[[redirects]]
+  from = "/crediti"
+  to = "/crediti.html"
+  status = 200
+
+[[redirects]]
+  from = "/contatti"
+  to = "/contatti.html"
+  status = 200

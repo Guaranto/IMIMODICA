@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scheda IMI — IMI Modica</title>
+  <meta name="description" content="Scheda individuale di un Internato Militare Italiano di Modica.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Scheda IMI — IMI Modica">
+  <meta property="og:description" content="Scheda individuale di un Internato Militare Italiano di Modica.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://imimodica.netlify.app/img/og-image.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Vai al contenuto principale</a>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo" aria-label="IMI Modica - Home">
+        <img src="img/logo.svg" alt="" width="40" height="40">
+        <span>IMI Modica</span>
+      </a>
+      <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="main-nav" role="navigation" aria-label="Navigazione principale">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="ricerca.html">Ricerca</a></li>
+          <li><a href="metodo-e-fonti.html">Metodo e Fonti</a></li>
+          <li><a href="autore.html">Autore</a></li>
+          <li><a href="crediti.html">Crediti</a></li>
+          <li><a href="contatti.html">Contatti</a></li>
+        </ul>
+      </nav>
+      <div class="nav-overlay" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <main id="main-content" class="page-main">
+    <div class="container">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Percorso di navigazione">
+        <a href="index.html">Home</a>
+        <span class="separator" aria-hidden="true">/</span>
+        <a href="ricerca.html">Ricerca</a>
+        <span class="separator" aria-hidden="true">/</span>
+        <span class="current" id="breadcrumb-name">Scheda</span>
+      </nav>
+
+      <!-- Loading -->
+      <div id="scheda-loading" class="loading">
+        <div class="spinner"></div>
+        <span>Caricamento scheda...</span>
+      </div>
+
+      <!-- Errore -->
+      <div id="scheda-error" class="error-message" style="display: none;"></div>
+
+      <!-- Contenuto scheda -->
+      <div id="scheda-content" style="display: none;">
+        <div class="scheda-layout">
+          <!-- Colonna foto -->
+          <aside class="scheda-foto">
+            <img id="scheda-foto" src="img/placeholder-portrait.svg" alt="Foto internato" loading="lazy">
+            <div style="margin-top: var(--space-md); text-align: center;" id="scheda-badge"></div>
+          </aside>
+
+          <!-- Colonna dati -->
+          <div class="scheda-dati">
+            <h1 class="scheda-nome" id="scheda-nome-completo"></h1>
+            <p class="scheda-subtitle" id="scheda-subtitle"></p>
+
+            <!-- Dati Anagrafici -->
+            <section class="scheda-section" aria-label="Dati anagrafici">
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon" aria-hidden="true">&#128100;</span>
+                  <h3>Dati Anagrafici</h3>
+                </div>
+                <div class="card-body">
+                  <div class="info-grid">
+                    <div class="info-item">
+                      <div class="info-label">Data di nascita</div>
+                      <div class="info-value" id="campo-data-nascita">—</div>
+                    </div>
+                    <div class="info-item">
+                      <div class="info-label">Luogo di nascita</div>
+                      <div class="info-value" id="campo-luogo-nascita">—</div>
+                    </div>
+                    <div class="info-item">
+                      <div class="info-label">Paternità</div>
+                      <div class="info-value" id="campo-paternita">—</div>
+                    </div>
+                    <div class="info-item">
+                      <div class="info-label">Maternità</div>
+                      <div class="info-value" id="campo-maternita">—</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Dati Militari -->
+            <section class="scheda-section" aria-label="Dati militari">
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon" aria-hidden="true">&#9733;</span>
+                  <h3>Dati Militari</h3>
+                </div>
+                <div class="card-body">
+                  <div class="info-grid">
+                    <div class="info-item">
+                      <div class="info-label">Grado</div>
+                      <div class="info-value" id="campo-grado">—</div>
+                    </div>
+                    <div class="info-item">
+                      <div class="info-label">Reparto</div>
+                      <div class="info-value" id="campo-reparto">—</div>
+                    </div>
+                    <div class="info-item">
+                      <div class="info-label">Distretto militare</div>
+                      <div class="info-value" id="campo-distretto">—</div>
+                    </div>
+                    <div class="info-item">
+                      <div class="info-label">Matricola</div>
+                      <div class="info-value" id="campo-matricola">—</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Internamento -->
+            <section class="scheda-section" aria-label="Internamento">
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon" aria-hidden="true">&#127383;</span>
+                  <h3>Internamento</h3>
+                </div>
+                <div class="card-body">
+                  <div class="info-grid">
+                    <div class="info-item">
+                      <div class="info-label">Campo di internamento</div>
+                      <div class="info-value" id="campo-campo">—</div>
+                    </div>
+                    <div class="info-item">
+                      <div class="info-label">Data cattura</div>
+                      <div class="info-value" id="campo-data-cattura">—</div>
+                    </div>
+                    <div class="info-item">
+                      <div class="info-label">Luogo cattura</div>
+                      <div class="info-value" id="campo-luogo-cattura">—</div>
+                    </div>
+                    <div class="info-item">
+                      <div class="info-label">Data liberazione</div>
+                      <div class="info-value" id="campo-data-liberazione">—</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Esito -->
+            <section class="scheda-section" aria-label="Esito">
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon" aria-hidden="true">&#128220;</span>
+                  <h3>Esito</h3>
+                </div>
+                <div class="card-body">
+                  <div class="info-grid">
+                    <div class="info-item">
+                      <div class="info-label">Stato</div>
+                      <div class="info-value" id="campo-stato">—</div>
+                    </div>
+                    <div class="info-item">
+                      <div class="info-label">Data di morte</div>
+                      <div class="info-value" id="campo-data-morte">—</div>
+                    </div>
+                    <div class="info-item">
+                      <div class="info-label">Causa di morte</div>
+                      <div class="info-value" id="campo-causa-morte">—</div>
+                    </div>
+                    <div class="info-item">
+                      <div class="info-label">Luogo di sepoltura</div>
+                      <div class="info-value" id="campo-luogo-sepoltura">—</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Decorazioni e Note -->
+            <section class="scheda-section" id="sezione-extra" aria-label="Decorazioni e note">
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon" aria-hidden="true">&#127942;</span>
+                  <h3>Decorazioni e Note</h3>
+                </div>
+                <div class="card-body">
+                  <div class="info-grid">
+                    <div class="info-item">
+                      <div class="info-label">Decorazioni</div>
+                      <div class="info-value" id="campo-decorazioni">—</div>
+                    </div>
+                    <div class="info-item">
+                      <div class="info-label">Note</div>
+                      <div class="info-value" id="campo-note">—</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Fonti -->
+            <section class="scheda-section" id="sezione-fonti" aria-label="Fonti archivistiche">
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon" aria-hidden="true">&#128218;</span>
+                  <h3>Fonti e Riferimenti</h3>
+                </div>
+                <div class="card-body">
+                  <div class="info-grid">
+                    <div class="info-item">
+                      <div class="info-label">Fonti archivistiche</div>
+                      <div class="info-value" id="campo-fonti">—</div>
+                    </div>
+                    <div class="info-item">
+                      <div class="info-label">Riferimenti familiari</div>
+                      <div class="info-value" id="campo-riferimenti">—</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Documenti PDF -->
+            <section class="scheda-section" id="sezione-documenti" aria-label="Documenti">
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon" aria-hidden="true">&#128196;</span>
+                  <h3>Documenti</h3>
+                </div>
+                <div class="card-body">
+                  <div class="doc-list" id="scheda-documenti">
+                    <p class="text-muted">Nessun documento disponibile.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Navigazione precedente/successivo -->
+            <nav class="scheda-nav" aria-label="Navigazione tra schede">
+              <a href="#" id="nav-prev" class="btn btn-outline btn-sm">&larr; Precedente</a>
+              <a href="ricerca.html" class="btn btn-outline btn-sm">Torna alla ricerca</a>
+              <a href="#" id="nav-next" class="btn btn-outline btn-sm">Successivo &rarr;</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-content">
+        <div class="footer-about">
+          <h3>IMI Modica</h3>
+          <p>
+            Progetto di ricerca storica dedicato alla memoria degli Internati Militari Italiani
+            del Comune di Modica durante la Seconda Guerra Mondiale (1943-1945).
+          </p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigazione</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="ricerca.html">Ricerca IMI</a></li>
+            <li><a href="metodo-e-fonti.html">Metodo e Fonti</a></li>
+            <li><a href="autore.html">Autore</a></li>
+            <li><a href="crediti.html">Crediti</a></li>
+            <li><a href="contatti.html">Contatti</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contatti</h4>
+          <p><a href="contatti.html">Scrivici per informazioni<br>o per contribuire alla ricerca.</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024–2025 IMI Modica. Progetto di ricerca storica a cura della comunità modicana.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="js/config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/data-service.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/scheda.js"></script>
+</body>
+</html>
