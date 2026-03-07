@@ -1,0 +1,86 @@
+backend:
+  name: git-gateway
+  branch: main
+
+locale: 'it'
+
+media_folder: "img"
+public_folder: "/img"
+
+collections:
+  - name: "pagine"
+    label: "Pagine del sito"
+    description: "Modifica i contenuti testuali delle pagine"
+    files:
+      - name: "home"
+        label: "Home Page"
+        file: "content/home.json"
+        fields:
+          - label: "Titolo Hero (una riga per ogni a capo)"
+            name: "hero_title"
+            widget: "text"
+            hint: "Ogni riga va a capo nel titolo grande in cima alla pagina"
+          - label: "Sottotitolo Hero"
+            name: "hero_subtitle"
+            widget: "string"
+          - label: "Titolo sezione introduttiva"
+            name: "intro_title"
+            widget: "string"
+          - label: "Testo introduttivo"
+            name: "intro_body"
+            widget: "markdown"
+            hint: "Usa il grassetto per evidenziare parole chiave. Separa i paragrafi con una riga vuota."
+          - label: "Titolo invito a contribuire"
+            name: "cta_title"
+            widget: "string"
+          - label: "Testo invito a contribuire"
+            name: "cta_text"
+            widget: "text"
+
+      - name: "autore"
+        label: "Pagina Autrice"
+        file: "content/autore.json"
+        fields:
+          - label: "Titolo pagina"
+            name: "title"
+            widget: "string"
+          - label: "Contenuto"
+            name: "body"
+            widget: "markdown"
+            hint: "Usa ## per i sottotitoli. Puoi inserire grassetto, corsivo, elenchi e link."
+
+      - name: "metodo-e-fonti"
+        label: "Metodo e Fonti"
+        file: "content/metodo-e-fonti.json"
+        fields:
+          - label: "Titolo pagina"
+            name: "title"
+            widget: "string"
+          - label: "Contenuto"
+            name: "body"
+            widget: "markdown"
+            hint: "Usa ## per i sottotitoli. Elenchi numerati con 1. 2. 3. Elenchi puntati con -"
+
+      - name: "crediti"
+        label: "Crediti e Ringraziamenti"
+        file: "content/crediti.json"
+        fields:
+          - label: "Titolo pagina"
+            name: "title"
+            widget: "string"
+          - label: "Contenuto"
+            name: "body"
+            widget: "markdown"
+            hint: "Usa ## per i sottotitoli. Per le istituzioni usa un elenco con - e **nome** in grassetto."
+
+      - name: "contatti"
+        label: "Pagina Contatti"
+        file: "content/contatti.json"
+        fields:
+          - label: "Titolo pagina"
+            name: "title"
+            widget: "string"
+          - label: "Testo introduttivo"
+            name: "intro"
+            widget: "text"
+            hint: "Il testo che appare sopra il modulo di contatto."
