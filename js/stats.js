@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const elTotale = document.getElementById('stat-totale');
   const elCampi = document.getElementById('stat-campi');
   const elDeceduti = document.getElementById('stat-deceduti');
+  const elDispersi = document.getElementById('stat-dispersi');
   const elSopravvissuti = document.getElementById('stat-sopravvissuti');
 
   if (!elTotale) return;
@@ -23,6 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           Utils.animateCounter(elTotale, stats.totale);
           Utils.animateCounter(elCampi, stats.numCampi);
           Utils.animateCounter(elDeceduti, stats.deceduti);
+          Utils.animateCounter(elDispersi, stats.dispersi);
           Utils.animateCounter(elSopravvissuti, stats.sopravvissuti);
           observer.disconnect();
         }
@@ -34,7 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   } catch (error) {
     console.error('Errore caricamento statistiche:', error);
     // Mostra trattini in caso di errore
-    [elTotale, elCampi, elDeceduti, elSopravvissuti].forEach(el => {
+    [elTotale, elCampi, elDeceduti, elDispersi, elSopravvissuti].forEach(el => {
       if (el) el.textContent = '—';
     });
   }
