@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <td>${Utils.escapeHtml(record.grado)}</td>
         <td>${Utils.escapeHtml(record.campo_internamento)}</td>
         <td>${Utils.statusBadge(record.stato)}</td>
+        <td>${Utils.escapeHtml(record.fonti_archivistiche)}</td>
       `;
       tableBody.appendChild(tr);
     });
