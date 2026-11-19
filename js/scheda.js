@@ -31,11 +31,33 @@ document.addEventListener('DOMContentLoaded', async () => {
     const breadcrumbName = document.getElementById('breadcrumb-name');
     if (breadcrumbName) breadcrumbName.textContent = `${record.cognome} ${record.nome}`;
 
-    // Foto
+    // Foto (una o più, separate da ";": la prima è il ritratto principale)
+    const fotoList = Utils.splitMultiple(record.foto_url);
     const fotoEl = document.getElementById('scheda-foto');
     if (fotoEl) {
-      fotoEl.src = Utils.driveImageUrl(record.foto_url, 400);
+      fotoEl.src = Utils.driveImageUrl(fotoList[0], 400);
       fotoEl.alt = `Foto di ${record.cognome} ${record.nome}`;
+    }
+    const galleria = document.getElementById('scheda-galleria');
+    if (galleria && fotoList.length > 1) {
+      fotoList.forEach((url, i) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'galleria-thumb' + (i === 0 ? ' active' : '');
+        btn.setAttribute('aria-label', `Mostra foto ${i + 1} di ${fotoList.length}`);
+        const img = document.createElement('img');
+        img.src = Utils.driveImageUrl(url, 160);
+        img.alt = '';
+        img.loading = 'lazy';
+        btn.appendChild(img);
+        btn.addEventListener('click', () => {
+          fotoEl.src = Utils.driveImageUrl(url, 400);
+          galleria.querySelectorAll('.galleria-thumb').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+        });
+        galleria.appendChild(btn);
+      });
+      galleria.hidden = false;
     }
 
     // Nome e sottotitolo
@@ -44,7 +66,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const subtitleEl = document.getElementById('scheda-subtitle');
     if (subtitleEl) {
-      const parts = [record.grado, record.reparto].filter(Boolean);
+      const parts = [record.grado, record.reparto].filter(v => v && v !== '-');
       subtitleEl.textContent = parts.join(' — ');
     }
 
@@ -55,41 +77,57 @@ document.addEventListener('DOMContentLoaded', async () => {
     // --- Dati Anagrafici ---
     setField('campo-data-nascita', Utils.formatDate(record.data_nascita));
     setField('campo-luogo-nascita', record.luogo_nascita);
+    setOptional('campo-provincia-regione',
+      [record.provincia, record.regione].filter(v => v && v !== '-').join(', '));
     setField('campo-paternita', record.paternita);
     setField('campo-maternita', record.maternita);
 
     // --- Dati Militari ---
     setField('campo-grado', record.grado);
     setField('campo-reparto', record.reparto);
-    setField('campo-distretto', record.distretto_militare);
+    setOptional('campo-distretto', record.distretto_militare);
     setField('campo-matricola', record.matricola);
+    setOptional('campo-matricola-lager', record.matricola_lager);
 
     // --- Internamento ---
-    setField('campo-campo', record.campo_internamento);
-    setField('campo-data-cattura', Utils.formatDate(record.data_cattura));
     setField('campo-luogo-cattura', record.luogo_cattura);
+    setField('campo-data-cattura', Utils.formatDate(record.data_cattura));
+    setField('campo-campo', record.campo_internamento);
     setField('campo-data-liberazione', Utils.formatDate(record.data_liberazione));
+    setOptional('campo-forze-alleate', record.forze_alleate);
 
     // --- Esito ---
-    setField('campo-stato', record.stato);
     const statoValueEl = document.getElementById('campo-stato');
-    if (statoValueEl && record.stato) {
-      statoValueEl.innerHTML = Utils.statusBadge(record.stato);
+    if (statoValueEl) {
+      if (record.stato) statoValueEl.innerHTML = Utils.statusBadge(record.stato);
+      else statoValueEl.textContent = '—';
     }
-    setField('campo-data-morte', Utils.formatDate(record.data_morte));
-    setField('campo-causa-morte', record.causa_morte);
-    setField('campo-luogo-sepoltura', record.luogo_sepoltura);
+    setOptional('campo-centro-alloggio', record.centro_alloggio);
+    setOptional('campo-data-rimpatrio', Utils.formatDate(record.data_rimpatrio));
+    // Per i reduci il "-" nei campi sul decesso non è informativo: si nasconde
+    const isCaduto = Utils.normalizeStato(record.stato) === 'caduto';
+    const deathVal = v => (!isCaduto && v === '-') ? '' : v;
+    setOptional('campo-data-morte', Utils.formatDate(deathVal(record.data_morte)));
+    setOptional('campo-causa-morte', deathVal(record.causa_morte));
+    setOptional('campo-luogo-sepoltura', deathVal(record.luogo_sepoltura));
 
-    // Nascondi campi esito non pertinenti
-    if (record.stato && record.stato.toLowerCase() === 'sopravvissuto') {
-      hideField('campo-data-morte');
-      hideField('campo-causa-morte');
-      hideField('campo-luogo-sepoltura');
+    // --- Memoria (progetti, sampietrini, scuole) ---
+    const memoriaEl = document.getElementById('campo-memoria');
+    const memorie = Utils.splitMultiple(record.memoria);
+    if (memoriaEl && memorie.length) {
+      memorie.forEach(m => {
+        const li = document.createElement('li');
+        li.textContent = m;
+        memoriaEl.appendChild(li);
+      });
+    } else {
+      const memSection = document.getElementById('sezione-memoria');
+      if (memSection) memSection.style.display = 'none';
     }
 
     // --- Decorazioni e Note ---
-    setField('campo-decorazioni', record.decorazioni);
-    setField('campo-note', record.note);
+    setOptional('campo-decorazioni', record.decorazioni);
+    setOptional('campo-note', record.note);
 
     // Nascondi sezione se vuota
     if (!record.decorazioni && !record.note) {
@@ -98,8 +136,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // --- Fonti ---
-    setField('campo-fonti', record.fonti_archivistiche);
-    setField('campo-riferimenti', record.riferimenti_familiari);
+    setOptional('campo-fonti', record.fonti_archivistiche);
+    setOptional('campo-riferimenti', record.riferimenti_familiari);
 
     if (!record.fonti_archivistiche && !record.riferimenti_familiari) {
       const fontiSection = document.getElementById('sezione-fonti');
@@ -159,6 +197,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (el) {
       el.textContent = value || '—';
     }
+  }
+
+  // Campo facoltativo: se vuoto, la voce viene nascosta
+  function setOptional(elementId, value) {
+    if (value && String(value).trim()) setField(elementId, value);
+    else hideField(elementId);
   }
 
   function hideField(elementId) {

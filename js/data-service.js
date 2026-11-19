@@ -35,11 +35,12 @@ const DataService = {
         return [];
       }
 
-      // Prima riga = intestazioni, le saltiamo
+      // Prima riga = intestazioni: servono per leggere le colonne per nome
+      const headers = rows[0];
       const dataRows = rows.slice(1);
 
       // Converti in oggetti e filtra solo pubblicati
-      const allRecords = dataRows.map(row => Utils.rowToObject(row));
+      const allRecords = dataRows.map(row => Utils.rowToObject(row, headers));
       const published = allRecords.filter(
         r => r.pubblicato && r.pubblicato.toUpperCase() === 'TRUE'
       );
@@ -84,13 +85,15 @@ const DataService = {
     };
 
     data.forEach(r => {
-      const stato = (r.stato || '').toLowerCase().trim();
-      if (stato === 'sopravvissuto') stats.sopravvissuti++;
-      else if (stato === 'deceduto') stats.deceduti++;
-      else if (stato === 'disperso') stats.dispersi++;
+      const esito = Utils.normalizeStato(r.stato);
+      if (esito === 'reduce') stats.sopravvissuti++;
+      else if (esito === 'caduto') stats.deceduti++;
+      else if (esito === 'disperso') stats.dispersi++;
 
-      if (r.campo_internamento) {
-        stats.campi.add(r.campo_internamento.trim());
+      // Conta i campi distinti, ignorando "-" e indicazioni generiche
+      const campo = (r.campo_internamento || '').trim();
+      if (campo && campo !== '-' && !/^lager (tedesco|nazista)$/i.test(campo)) {
+        stats.campi.add(campo.toLowerCase().replace(/\s+/g, ' '));
       }
     });
 

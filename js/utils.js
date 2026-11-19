@@ -10,9 +10,24 @@ const Utils = {
    */
   driveImageUrl(shareUrl, width = 400) {
     if (!shareUrl) return 'img/placeholder-portrait.svg';
-    const match = shareUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
+    const url = shareUrl.trim();
+    // Foto ospitate sul sito (es. img/imi/12-rossi-mario-1.jpg)
+    if (/^img\/[\w\-./]+\.(jpe?g|png|webp|gif)$/i.test(url)) return url;
+    const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
     if (!match) return 'img/placeholder-portrait.svg';
     return `https://lh3.googleusercontent.com/d/${match[1]}=w${width}`;
+  },
+
+  /**
+   * Riconduce l'esito alle tre categorie: reduce, caduto, disperso
+   * (accetta sia Reduce/Caduto sia Sopravvissuto/Deceduto)
+   */
+  normalizeStato(stato) {
+    const s = (stato || '').toLowerCase().trim();
+    if (s === 'reduce' || s === 'sopravvissuto') return 'reduce';
+    if (s === 'caduto' || s === 'deceduto') return 'caduto';
+    if (s === 'disperso') return 'disperso';
+    return '';
   },
 
   /**
@@ -62,10 +77,9 @@ const Utils = {
    * Restituisce classe CSS per badge esito
    */
   statusBadgeClass(stato) {
-    if (!stato) return '';
-    const s = stato.toLowerCase().trim();
-    if (s === 'sopravvissuto') return 'badge-sopravvissuto';
-    if (s === 'deceduto') return 'badge-deceduto';
+    const s = this.normalizeStato(stato);
+    if (s === 'reduce') return 'badge-sopravvissuto';
+    if (s === 'caduto') return 'badge-deceduto';
     if (s === 'disperso') return 'badge-disperso';
     return '';
   },
@@ -108,11 +122,16 @@ const Utils = {
   /**
    * Converte riga array in oggetto con nomi campo
    */
-  rowToObject(row) {
+  rowToObject(row, headers = []) {
     const obj = {};
-    const cols = CONFIG.COLUMNS;
-    for (const [key, index] of Object.entries(cols)) {
-      obj[key] = row[index] || '';
+    const byName = {};
+    headers.forEach((h, i) => {
+      const key = String(h || '').trim().toLowerCase();
+      if (key && !(key in byName)) byName[key] = i;
+    });
+    for (const [key, fallbackIndex] of Object.entries(CONFIG.COLUMNS)) {
+      const index = key in byName ? byName[key] : fallbackIndex;
+      obj[key] = String(row[index] ?? '').trim();
     }
     return obj;
   },

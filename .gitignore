@@ -2,3 +2,10 @@
 .DS_Store
 Thumbs.db
 *.log
+
+# Local Netlify folder
+.netlify
+
+# Materiale grezzo e file di lavoro (non pubblicare)
+albo d'onore IMI Modicani/
+~$*

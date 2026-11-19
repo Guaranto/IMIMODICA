@@ -78,6 +78,7 @@
           <aside class="scheda-foto">
             <img id="scheda-foto" src="img/placeholder-portrait.svg" alt="Foto internato" loading="lazy">
             <div style="margin-top: var(--space-md); text-align: center;" id="scheda-badge"></div>
+            <div class="scheda-galleria" id="scheda-galleria" hidden></div>
           </aside>
 
           <!-- Colonna dati -->
@@ -101,6 +102,10 @@
                     <div class="info-item">
                       <div class="info-label">Luogo di nascita</div>
                       <div class="info-value" id="campo-luogo-nascita">—</div>
+                    </div>
+                    <div class="info-item">
+                      <div class="info-label">Provincia / Regione</div>
+                      <div class="info-value" id="campo-provincia-regione">—</div>
                     </div>
                     <div class="info-item">
                       <div class="info-label">Paternità</div>
@@ -129,7 +134,7 @@
                       <div class="info-value" id="campo-grado">—</div>
                     </div>
                     <div class="info-item">
-                      <div class="info-label">Reparto</div>
+                      <div class="info-label">Reparto / Forze Armate</div>
                       <div class="info-value" id="campo-reparto">—</div>
                     </div>
                     <div class="info-item">
@@ -137,8 +142,12 @@
                       <div class="info-value" id="campo-distretto">—</div>
                     </div>
                     <div class="info-item">
-                      <div class="info-label">Matricola</div>
+                      <div class="info-label">Matricola distretto militare</div>
                       <div class="info-value" id="campo-matricola">—</div>
+                    </div>
+                    <div class="info-item">
+                      <div class="info-label">Matricola lager</div>
+                      <div class="info-value" id="campo-matricola-lager">—</div>
                     </div>
                   </div>
                 </div>
@@ -155,20 +164,24 @@
                 <div class="card-body">
                   <div class="info-grid">
                     <div class="info-item">
-                      <div class="info-label">Campo di internamento</div>
-                      <div class="info-value" id="campo-campo">—</div>
-                    </div>
-                    <div class="info-item">
-                      <div class="info-label">Data cattura</div>
-                      <div class="info-value" id="campo-data-cattura">—</div>
-                    </div>
-                    <div class="info-item">
-                      <div class="info-label">Luogo cattura</div>
+                      <div class="info-label">Luogo di cattura</div>
                       <div class="info-value" id="campo-luogo-cattura">—</div>
                     </div>
                     <div class="info-item">
-                      <div class="info-label">Data liberazione</div>
+                      <div class="info-label">Data di cattura</div>
+                      <div class="info-value" id="campo-data-cattura">—</div>
+                    </div>
+                    <div class="info-item">
+                      <div class="info-label">Luogo di internamento</div>
+                      <div class="info-value" id="campo-campo">—</div>
+                    </div>
+                    <div class="info-item">
+                      <div class="info-label">Data di liberazione dal lager</div>
                       <div class="info-value" id="campo-data-liberazione">—</div>
+                    </div>
+                    <div class="info-item">
+                      <div class="info-label">Liberato da (Forze Alleate)</div>
+                      <div class="info-value" id="campo-forze-alleate">—</div>
                     </div>
                   </div>
                 </div>
@@ -185,8 +198,16 @@
                 <div class="card-body">
                   <div class="info-grid">
                     <div class="info-item">
-                      <div class="info-label">Stato</div>
+                      <div class="info-label">Esito</div>
                       <div class="info-value" id="campo-stato">—</div>
+                    </div>
+                    <div class="info-item">
+                      <div class="info-label">Centro alloggio</div>
+                      <div class="info-value" id="campo-centro-alloggio">—</div>
+                    </div>
+                    <div class="info-item">
+                      <div class="info-label">Data di rimpatrio</div>
+                      <div class="info-value" id="campo-data-rimpatrio">—</div>
                     </div>
                     <div class="info-item">
                       <div class="info-label">Data di morte</div>
@@ -201,6 +222,19 @@
                       <div class="info-value" id="campo-luogo-sepoltura">—</div>
                     </div>
                   </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Memoria -->
+            <section class="scheda-section" id="sezione-memoria" aria-label="Memoria">
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon" aria-hidden="true">&#127895;</span>
+                  <h3>Memoria</h3>
+                </div>
+                <div class="card-body">
+                  <ul class="memoria-list" id="campo-memoria"></ul>
                 </div>
               </div>
             </section>
