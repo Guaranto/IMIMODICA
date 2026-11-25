@@ -14,6 +14,10 @@ const CONFIG = {
     return `https://sheets.googleapis.com/v4/spreadsheets/${this.SPREADSHEET_ID}/values/${this.SHEET_NAME}!${this.RANGE}?key=${this.API_KEY}`;
   },
 
+  // Copia dei dati ospitata sul sito: usata se il foglio Google non risponde
+  // (si aggiorna con tools/aggiorna_copia_dati.py)
+  BACKUP_DATA_URL: 'data/imi-modica.json',
+
   // Cache
   CACHE_KEY: 'imi_modica_data_v2',
   CACHE_TIMESTAMP_KEY: 'imi_modica_timestamp_v2',

@@ -20,47 +20,55 @@ const DataService = {
       return cached;
     }
 
-    // Fetch da API
+    // Fetch da API (foglio Google)
     try {
       const response = await fetch(CONFIG.SHEETS_API_URL);
       if (!response.ok) {
         throw new Error(`Errore API: ${response.status} ${response.statusText}`);
       }
-
       const json = await response.json();
-      const rows = json.values;
-
-      if (!rows || rows.length < 2) {
-        console.warn('Nessun dato trovato nel foglio.');
-        return [];
-      }
-
-      // Prima riga = intestazioni: servono per leggere le colonne per nome
-      const headers = rows[0];
-      const dataRows = rows.slice(1);
-
-      // Converti in oggetti e filtra solo pubblicati
-      const allRecords = dataRows.map(row => Utils.rowToObject(row, headers));
-      const published = allRecords.filter(
-        r => r.pubblicato && r.pubblicato.toUpperCase() === 'TRUE'
-      );
-
-      // Salva in cache
+      const published = this._parseRows(json.values);
+      if (!published.length) throw new Error('Nessun dato trovato nel foglio.');
       this._setCache(published);
       this._data = published;
       return published;
 
     } catch (error) {
-      console.error('Errore nel caricamento dati:', error);
-      // Tenta di usare cache scaduta come fallback
+      console.error('Errore nel caricamento dati dal foglio Google:', error);
+      // 1) cache scaduta di questa sessione
       const staleCache = this._getCache(true);
       if (staleCache) {
         console.warn('Uso cache scaduta come fallback.');
         this._data = staleCache;
         return staleCache;
       }
+      // 2) copia dei dati ospitata sul sito
+      try {
+        const response = await fetch(CONFIG.BACKUP_DATA_URL);
+        if (!response.ok) throw new Error(`Copia di riserva: ${response.status}`);
+        const json = await response.json();
+        const published = this._parseRows(json.values);
+        if (!published.length) throw new Error('Copia di riserva vuota.');
+        console.warn(`Uso la copia di riserva dei dati (aggiornata al ${json.aggiornato}).`);
+        this._setCache(published);
+        this._data = published;
+        return published;
+      } catch (backupError) {
+        console.error('Copia di riserva non disponibile:', backupError);
+      }
       throw error;
     }
+  },
+
+  /**
+   * Righe grezze (prima riga = intestazioni) -> record pubblicati
+   */
+  _parseRows(rows) {
+    if (!rows || rows.length < 2) return [];
+    const headers = rows[0];
+    return rows.slice(1)
+      .map(row => Utils.rowToObject(row, headers))
+      .filter(r => r.pubblicato && r.pubblicato.toUpperCase() === 'TRUE');
   },
 
   /**
