@@ -143,6 +143,11 @@ document.addEventListener('DOMContentLoaded', async () => {
       setOptional('campo-decorazioni', record.decorazioni);
     }
     setOptional('campo-note', record.note);
+    // Se c'è solo uno dei due campi, occupa tutta la larghezza
+    if (!record.decorazioni !== !record.note) {
+      const solo = document.getElementById(record.decorazioni ? 'campo-decorazioni' : 'campo-note');
+      if (solo && solo.closest('.info-item')) solo.closest('.info-item').style.gridColumn = '1 / -1';
+    }
 
     // Nascondi sezione se vuota
     if (!record.decorazioni && !record.note) {
