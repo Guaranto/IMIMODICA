@@ -153,6 +153,17 @@
   color: var(--color-text);
 }
 
+/* Avviso per i familiari */
+.scheda-familiari {
+  margin-top: var(--space-xl);
+  padding: var(--space-md) var(--space-lg);
+  border-left: 3px solid var(--color-accent);
+  background: var(--color-surface);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
 /* Navigazione scheda */
 .scheda-nav {
   display: flex;
@@ -312,6 +323,7 @@
   .nav-overlay,
   .filters-panel,
   .scheda-nav,
+  .scheda-familiari,
   .btn,
   .skip-link {
     display: none !important;

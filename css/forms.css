@@ -167,3 +167,28 @@ textarea.form-control {
     flex-direction: column;
   }
 }
+
+/* Consenso privacy */
+.form-check {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.form-check input {
+  margin-top: 0.25em;
+  width: 1.1em;
+  height: 1.1em;
+  accent-color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.form-privacy-note {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin: var(--space-xs) 0 0 calc(1.1em + var(--space-sm));
+  line-height: 1.6;
+}
