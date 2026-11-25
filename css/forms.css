@@ -186,7 +186,7 @@ textarea.form-control {
   flex-shrink: 0;
 }
 
-.form-privacy-note {
+.article-page .form-privacy-note {
   font-size: var(--text-xs);
   color: var(--color-text-muted);
   margin: var(--space-xs) 0 0 calc(1.1em + var(--space-sm));
