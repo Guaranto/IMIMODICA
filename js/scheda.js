@@ -126,7 +126,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // --- Decorazioni e Note ---
-    setOptional('campo-decorazioni', record.decorazioni);
+    // Più decorazioni separate da ";" -> elenco puntato
+    const decorazioni = Utils.splitMultiple(record.decorazioni);
+    const decorEl = document.getElementById('campo-decorazioni');
+    if (decorEl && decorazioni.length > 1) {
+      decorEl.textContent = '';
+      const ul = document.createElement('ul');
+      ul.className = 'memoria-list';
+      decorazioni.forEach(d => {
+        const li = document.createElement('li');
+        li.textContent = d;
+        ul.appendChild(li);
+      });
+      decorEl.appendChild(ul);
+    } else {
+      setOptional('campo-decorazioni', record.decorazioni);
+    }
     setOptional('campo-note', record.note);
 
     // Nascondi sezione se vuota
