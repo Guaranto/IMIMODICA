@@ -1,0 +1,38 @@
+# Aggiorna ogni ora la copia di riserva dei dati (data/imi-modica.json)
+# scaricando il foglio Google. Fa un commit solo se i dati sono cambiati;
+# Netlify poi pubblica il sito aggiornato.
+name: Aggiorna copia dei dati
+
+on:
+  schedule:
+    - cron: '17 * * * *'   # ogni ora (orario UTC)
+  workflow_dispatch:        # pulsante "Run workflow" per lanciarlo a mano
+
+permissions:
+  contents: write
+
+concurrency:
+  group: aggiorna-copia-dati
+  cancel-in-progress: false
+
+jobs:
+  aggiorna:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Scarica il foglio e aggiorna la copia
+        run: python3 tools/aggiorna_copia_dati.py
+
+      - name: Commit se ci sono modifiche
+        run: |
+          if git diff --quiet -- data/imi-modica.json; then
+            echo "Nessuna modifica da salvare."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/imi-modica.json
+          git commit -m "Aggiorna copia dei dati dal foglio Google"
+          git push
